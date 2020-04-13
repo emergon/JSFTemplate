@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:l="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p>It’s basically just a XHTML file which is by JSF
+            interpreted as a Facelets file or just Facelet. This Facelets file will ultimately generate the
+            HTML markup that is sent to the browser in response to a request. With help of EL, it can
+            reference a bean property and invoke a bean action</p>
+        <h:form>
+            <h:outputLabel for="input" value="Input" />
+            <h:inputText id="input" value="#{helloWorld.input}" />
+            <h:commandButton value="Submit"
+                             action="#{helloWorld.submit}">
+                <!--The execute attribute indicates that
+                the entire <h:form> must be processed on submit and the render
+                attribute indicates that the tag identified by id="output" must be
+                updated on complete of the Ajax submit.-->
+                <l:ajax execute="@form" render=":output" />
+            </h:commandButton>
+        </h:form>
+        <h:outputText id="output" value="#{helloWorld.output}" />
+    </h:body>
+</html>
+
